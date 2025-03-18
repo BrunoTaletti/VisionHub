@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             whatsapp: whatsapp
         };
         
-        // Simula o envio para o endpoint (a ser substituído)
+        // Envia os dados para o Google Apps Script
         saveToExcel(formData);
     });
     
@@ -51,10 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            mode: 'no-cors' // Modo no-cors para evitar problemas de CORS
         })
-        .then(response => response.json())
-        .then(result => {
+        .then(() => {
+            // Exibe a mensagem de sucesso (não há resposta do servidor)
             form.innerHTML = `
                 <div class="success-message">
                     <h3>🎉 Parabéns! Você está dentro!</h3>
@@ -124,4 +125,4 @@ style.textContent = `
     }
 `;
 
-document.head.appendChild(style); 
+document.head.appendChild(style);
