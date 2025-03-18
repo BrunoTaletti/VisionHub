@@ -46,28 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     function saveToExcel(data) {
-        // Aqui você vai substituir pelo endpoint real da sua planilha
-        // Por enquanto, vamos apenas mostrar uma mensagem de sucesso
-        console.log('Dados a serem enviados:', data);
-        
-        // Simulação de uma requisição
-        setTimeout(() => {
-            // Substituir o formulário por uma mensagem de sucesso
-            form.innerHTML = `
-                <div class="success-message">
-                    <h3>🎉 Parabéns! Você está dentro!</h3>
-                    <p>Vamos entrar em contato com você em breve pelo WhatsApp ${formatWhatsapp(data.whatsapp)}.</p>
-                </div>
-            `;
-            
-            // Animação simples para destacar a mensagem
-            const successMessage = document.querySelector('.success-message');
-            successMessage.style.animation = 'pulse 2s';
-        }, 1000);
-        
-        // Quando você tiver o endpoint real, use algo assim:
-        /*
-        fetch('URL_DO_SEU_ENDPOINT', {
+        fetch('https://script.google.com/macros/s/AKfycby9GfqPN-xN1PDqwsDgtiKs7efMOblVRBWVkByMLd-wkIqHPR-9dkBjtzXc9yrFPf5UPg/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -82,12 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>Vamos entrar em contato com você em breve pelo WhatsApp ${formatWhatsapp(data.whatsapp)}.</p>
                 </div>
             `;
+            
+            // Animação para destacar a mensagem
+            const successMessage = document.querySelector('.success-message');
+            successMessage.style.animation = 'pulse 2s';
         })
         .catch(error => {
             console.error('Erro ao enviar os dados:', error);
             whatsappError.textContent = 'Ocorreu um erro ao enviar os dados. Tente novamente.';
         });
-        */
     }
     
     function formatWhatsapp(number) {
